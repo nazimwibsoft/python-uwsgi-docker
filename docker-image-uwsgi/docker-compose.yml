@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  app:
+    image: python:3.8.13
+    ports:
+      - "8000:8080"
+      - "8001:8081"
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+      - APPLICATION_MODULE=main:application
+    entrypoint: ["/app/entrypoint.sh"]
